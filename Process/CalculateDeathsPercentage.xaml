@@ -1,0 +1,322 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CalculateDeathsPercentage" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Data table with a value of percentage of new cases and deaths along merged data table value " Name="in_out_dt_deaths" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1063,5653</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CalculateDeathsPercentage_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="34">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Core.Activities.TextModifications</x:String>
+      <x:String>UiPath.Activities.System.Workflow.Business</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Calculate the percentage of new cases and deaths&#xA;" DisplayName="CalculateDeathsPercentage" sap:VirtualizedContainerService.HintSize="1073,5488" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="percentageOfNewDeaths" />
+      <Variable x:TypeArguments="x:String" Name="percentageOfNewCases" />
+      <Variable x:TypeArguments="x:String" Name="totalCases" />
+      <Variable x:TypeArguments="x:String" Name="newDeaths" />
+      <Variable x:TypeArguments="x:String" Name="newCases" />
+      <Variable x:TypeArguments="x:String" Name="totalDeaths" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1031,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started to calculate the death percentage&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Percentage Of New Cases" DataTable="[in_out_dt_deaths]" DisplayName=" Add Percentage of New Cases Column" sap:VirtualizedContainerService.HintSize="1031,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Percentage of New Deaths" DataTable="[in_out_dt_deaths]" DisplayName="Add Percentage of Death Column" sap:VirtualizedContainerService.HintSize="1031,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_out_dt_deaths]" DisplayName="For Each Row in Deaths Data Table" sap:VirtualizedContainerService.HintSize="1031,3732" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="668,3612" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="New Cases" DisplayName="Get New Cases " sap:VirtualizedContainerService.HintSize="626,185" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[CurrentRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[newCases]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <ui:ModifyText DisplayName="Remove the comma in new cases value" sap:VirtualizedContainerService.HintSize="626,340" sap2010:WorkflowViewState.IdRef="ModifyText_1" OutputText="[newCases]" SourceText="[newCases]">
+              <ui:ModifyText.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="387,147" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_1" SearchText=",">
+                      <ucat:FindAndReplaceTextModification.ReplaceText>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ucat:FindAndReplaceTextModification.ReplaceText>
+                    </ucat:FindAndReplaceTextModification>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ModifyText.Body>
+            </ui:ModifyText>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Total Cases" DisplayName="Get Total Cases " sap:VirtualizedContainerService.HintSize="626,185" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[CurrentRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[totalCases]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <ui:ModifyText DisplayName="Remove the comma in total cases value" sap:VirtualizedContainerService.HintSize="626,340" sap2010:WorkflowViewState.IdRef="ModifyText_2" OutputText="[totalCases]" SourceText="[totalCases]">
+              <ui:ModifyText.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="387,147" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_2" SearchText=",">
+                      <ucat:FindAndReplaceTextModification.ReplaceText>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ucat:FindAndReplaceTextModification.ReplaceText>
+                    </ucat:FindAndReplaceTextModification>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ModifyText.Body>
+            </ui:ModifyText>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="New Death" DisplayName="Get New Deaths" sap:VirtualizedContainerService.HintSize="626,185" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[CurrentRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[newDeaths]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <ui:ModifyText DisplayName="Remove the comma in new deaths value" sap:VirtualizedContainerService.HintSize="626,340" sap2010:WorkflowViewState.IdRef="ModifyText_3" OutputText="[newDeaths]" SourceText="[newDeaths]">
+              <ui:ModifyText.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="387,147" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_3" SearchText=",">
+                      <ucat:FindAndReplaceTextModification.ReplaceText>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ucat:FindAndReplaceTextModification.ReplaceText>
+                    </ucat:FindAndReplaceTextModification>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ModifyText.Body>
+            </ui:ModifyText>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Total Death" DisplayName="Get Total Deaths" sap:VirtualizedContainerService.HintSize="626,185" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[CurrentRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[totalDeaths]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <If Condition="[(Not String.IsNullOrWhiteSpace(totalCases))  and (Not String.IsNullOrWhiteSpace(newCases))]" DisplayName="checking new cases value and total cases value are not null " sap:VirtualizedContainerService.HintSize="626,530" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,382" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="calculate the percentage of new cases" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[percentageOfNewCases]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[Convert.ToDouble(math.Round((Convert.ToDouble(newCases) / Convert.ToDouble(totalCases)) * 100,2)).ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Percentage Of New Cases" DisplayName="Updating the value of percentage of new cases" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_1" Row="[CurrentRow]" Value="[percentageOfNewCases]" />
+                </Sequence>
+              </If.Then>
+            </If>
+            <If Condition="[(Not String.IsNullOrWhiteSpace(totalDeaths)) And (Not String.IsNullOrWhiteSpace(newDeaths))]" DisplayName="checking new deaths value and total deaths value are not null " sap:VirtualizedContainerService.HintSize="626,910" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="481,762" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ModifyText DisplayName="Remove the comma in total deaths value" sap:VirtualizedContainerService.HintSize="439,340" sap2010:WorkflowViewState.IdRef="ModifyText_4" OutputText="[totalDeaths]" SourceText="[totalDeaths]">
+                    <ui:ModifyText.Body>
+                      <ActivityAction>
+                        <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="387,147" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_4" SearchText=",">
+                            <ucat:FindAndReplaceTextModification.ReplaceText>
+                              <InArgument x:TypeArguments="x:String">
+                                <Literal x:TypeArguments="x:String" Value="" />
+                              </InArgument>
+                            </ucat:FindAndReplaceTextModification.ReplaceText>
+                          </ucat:FindAndReplaceTextModification>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ModifyText.Body>
+                  </ui:ModifyText>
+                  <Assign DisplayName="calculate percentage of deaths" sap:VirtualizedContainerService.HintSize="439,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[percentageOfNewDeaths]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[Convert.ToDouble(math.Round((Convert.ToDouble(newDeaths) / Convert.ToDouble(totalDeaths)) * 100,2)).ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Percentage of New Deaths" DisplayName="Updating the value of percentage of deaths" sap:VirtualizedContainerService.HintSize="439,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_2" Row="[CurrentRow]" Value="[percentageOfNewDeaths]" />
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Status" DataTable="[in_out_dt_deaths]" DisplayName="Add Status" sap:VirtualizedContainerService.HintSize="1031,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Reason" DataTable="[in_out_dt_deaths]" DisplayName="Add Status" sap:VirtualizedContainerService.HintSize="1031,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_out_dt_deaths]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1031,1072" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="997,952" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="casesValue" />
+              <Variable x:TypeArguments="x:String" Name="deathValue" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="955,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[casesValue]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[CurrentRow("Percentage Of New Cases").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="955,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[deathValue]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[CurrentRow("Percentage of New Deaths").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[(not String.IsNullOrEmpty(casesValue)) and (not String.IsNullOrEmpty(deathValue))]" sap:VirtualizedContainerService.HintSize="955,660" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Status" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_3" Row="[CurrentRow]" Value="[&quot;Success&quot;]" />
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,512" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Status" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_4" Row="[CurrentRow]" Value="[&quot;Skipped&quot;]" />
+                  <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Reason" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_5" Row="[CurrentRow]" Value="[&quot;Percentage is null&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1031,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Calculation of death percentage has been ended successfully&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

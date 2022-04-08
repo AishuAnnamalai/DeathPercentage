@@ -1,0 +1,4 @@
+Property,Value
+whoDashboardUrl,https://covid19.who.int/
+worldometerUrl,https://www.worldometers.info/coronavirus/
+excludedCountries,"South America,Brazil"

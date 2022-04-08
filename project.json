@@ -1,0 +1,55 @@
+{
+  "name": "WHO_Death_Percentage_Calculation",
+  "description": "Blank Process",
+  "main": "Main.xaml",
+  "dependencies": {
+    "Element5.Core": "[1.2.25]",
+    "UiPath.Excel.Activities": "[2.11.4]",
+    "UiPath.Mail.Activities": "[1.12.3]",
+    "UiPath.System.Activities": "[21.10.4]",
+    "UiPath.UIAutomation.Activities": "[21.10.5]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.10.5.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "f958471a-d1f6-4340-9b4f-c1f547f5788e",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {}
+}
